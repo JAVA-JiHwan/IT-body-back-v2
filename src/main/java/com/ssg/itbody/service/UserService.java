@@ -12,6 +12,7 @@ import java.util.List;
 
 public interface UserService {
     void signup(AddUserRequestDTO dto);
+    UserEntity findById(Long userId);
 
 
     LoginResponseDTO login(LoginRequestDTO loginRequestDTO);

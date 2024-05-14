@@ -47,6 +47,11 @@ public class UserServiceImpl implements UserService{
         this.tokenProvider = tokenProvider;
     }
 
+    @Override
+    public UserEntity findById(Long userId) {
+        return userRepository.findById(userId)
+                .orElseThrow(() -> new IllegalArgumentException("User not found with ID: " + userId));
+    }
 
 
 
