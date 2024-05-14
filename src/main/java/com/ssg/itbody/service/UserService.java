@@ -31,7 +31,7 @@ public interface UserService {
 
     boolean authenticateUser(LoginRequestDTO loginRequest);
 
-    boolean isNicknameAvailable(String nickname);
+
 
 
 
