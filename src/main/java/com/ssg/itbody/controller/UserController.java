@@ -1,69 +1,72 @@
 package com.ssg.itbody.controller;
 
-import com.ssg.itbody.dto.AddUserRequestDTO;
-import com.ssg.itbody.dto.LoginRequestDTO;
-import com.ssg.itbody.dto.LoginResponseDTO;
-import com.ssg.itbody.dto.UserResponseDTO;
-import com.ssg.itbody.entity.UserEntity;
-import com.ssg.itbody.config.jwt.TokenProvider;
-import com.ssg.itbody.config.ouath.DecodeSocialLoginToken;
+import com.ssg.itbody.dto.UserDTO;
+import com.ssg.itbody.exception.DuplicateUserException;
 import com.ssg.itbody.service.UserDetailService;
-import com.ssg.itbody.service.UserServiceImpl;
-import com.ssg.itbody.service.UserUpdateDTO;
-import jakarta.validation.Valid;
+import com.ssg.itbody.service.UserService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
+import lombok.extern.log4j.Log4j2;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
-import java.security.GeneralSecurityException;
-
 @RequiredArgsConstructor
-@RestController
-@RequestMapping("/api")
+@Controller
+@Log4j2
+@RequestMapping("/login")
 public class UserController {
 
-    private final UserServiceImpl userService;
+    private final UserService userService;
     private final UserDetailService userDetailService;
-    private final TokenProvider tokenProvider;
-    private final DecodeSocialLoginToken decodeSocialLoginToken;
 
-    @PostMapping("/signup")
-    public ResponseEntity<String> signup(@RequestBody @Valid AddUserRequestDTO requestDTO) {
-        userService.signup(requestDTO);
-        return ResponseEntity.status(HttpStatus.CREATED).body("회원가입이 성공적으로 완료되었습니다.");
+    @GetMapping("/login")
+    public String login(@RequestParam(value ="expired" ,required = false) String expired,
+                        @RequestParam(value = "error",required = false) String error, @RequestParam(value = "exception",required = false)String exception, Model model){
+        if("true".equals(expired)){
+            model.addAttribute("message", "다른 곳에서 접근되었습니다, 연결을 종료합니다");
+        }
+        model.addAttribute("error", error);
+        model.addAttribute("exception", exception);
+        return "login";
+    }
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if(authentication != null) {
+            new SecurityContextLogoutHandler().logout(request, response, authentication);
+        }
+        return "redirect:login/login";
     }
 
-    @PostMapping("/logout")
-    public ResponseEntity<String> logout(@RequestHeader("Authorization") String accessToken,
-                                         @RequestBody String refreshToken) {
-        userService.logout(accessToken, refreshToken);
-        return ResponseEntity.ok("로그아웃 되었습니다.");
-    }
 
-    @PostMapping("/login")
-    public ResponseEntity<LoginResponseDTO> login(@RequestBody @Valid LoginRequestDTO loginRequest) {
-        LoginResponseDTO loginResponseDTO = userService.login(loginRequest);
-        return ResponseEntity.ok(loginResponseDTO);
+//    //회원 가입 processing 이메일이 중복된 경우 이미 존재하는 회원 반환
+//    @PostMapping(value = "/joinProc", produces = MediaType.TEXT_PLAIN_VALUE)
+//    public ResponseEntity<String> joinProcess(@ModelAttribute UserDTO userDTO) {
+//        log.info(userDTO.getNickname());
+//        try {
+//            userService.joinProcess(userDTO);
+//            return ResponseEntity.ok("회원가입이 완료되었습니다.");
+//        } catch (DuplicateUserException d) {
+//            return ResponseEntity.badRequest().body("이미 존재하는 회원입니다.");
+//        }
+//    }
+@PostMapping("/joinProc")
+public String joinProcess(@ModelAttribute UserDTO userDTO, Model model) {
+    log.info(userDTO.getNickname());
+    try {
+        userService.joinProcess(userDTO);
+        return "redirect:/login/login"; // 회원가입 후 로그인 페이지로 리다이렉트
+    } catch (DuplicateUserException d) {
+        model.addAttribute("error", "이미 존재하는 회원입니다.");
+        return "login/login"; // 회원가입 페이지로 다시 돌아가기
     }
-
-    @PostMapping("/login/google")
-    public ResponseEntity<?> googleLogin(@RequestBody @Valid String token) throws GeneralSecurityException, IOException {
-        return ResponseEntity.ok(decodeSocialLoginToken.decodingToken(token));
-    }
-
-    @GetMapping("/mypage/{id}")
-    public ResponseEntity<UserResponseDTO> getUserById(@PathVariable Long id) {
-        UserEntity userEntity = userService.getUserById(id);
-        return ResponseEntity.ok(UserResponseDTO.from(userEntity));
-    }
-
-    @PatchMapping("/mypage/{id}")
-    public ResponseEntity<String> updateUser(@PathVariable Long id,
-                                             @RequestBody @Valid UserUpdateDTO userUpdateDTO) {
-        userUpdateDTO.setUserId(id);
-        userService.updateUser(userUpdateDTO);
-        return ResponseEntity.ok("유저 정보가 성공적으로 업데이트되었습니다.");
-    }
+}
 }

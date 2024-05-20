@@ -70,12 +70,14 @@ public class UserEntity implements UserDetails {
     private Authority authority;
 
     @Builder
-    public UserEntity(String email, String password, String nickname, String phone, String imageUrl, MembershipGrade membershipGrade, Authority authority) {
+    public UserEntity(String nickname,String email, String password, String phone, String imageUrl,LocalDateTime createdAt,LocalDateTime updatedAt ,MembershipGrade membershipGrade, Authority authority) {
+        this.nickname = nickname;
         this.email = email;
         this.password = password;
-        this.nickname = nickname;
         this.phone = phone;
         this.imageUrl = imageUrl;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
         this.membershipGrade = membershipGrade;
         this.authority = authority;
     }

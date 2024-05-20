@@ -1,4 +1,4 @@
-package com.ssg.itbody.user;
+package com.ssg.user;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

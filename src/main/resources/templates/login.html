@@ -1,46 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Startup - Startup Website Template</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta content="Free HTML Templates" name="keywords" />
-    <meta content="Free HTML Templates" name="description" />
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8" />
+  <title>Startup - Startup Website Template</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <meta content="Free HTML Templates" name="keywords" />
+  <meta content="Free HTML Templates" name="description" />
 
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon" />
+  <!-- Favicon -->
+  <link th:href="@{/static/assets/img/favicon.ico}" rel="icon" href="../static/assets/img/favicon.ico"/>
 
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Rubik:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+  <!-- Google Web Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-    <!-- Icon Font Stylesheet -->
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
-      rel="stylesheet"
-    />
+  <!-- Icon Font Stylesheet -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
 
-    <!-- Libraries Stylesheet -->
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
-    <link href="lib/animate/animate.min.css" rel="stylesheet" />
+  <!-- Libraries Stylesheet -->
+  <link th:href="@{/static/assets/lib/owlcarousel/assets/owl.carousel.min.css}" rel="stylesheet" href="../static/assets/lib/owlcarousel/assets/owl.carousel.min.css"/>
+  <link th:href="@{/static/assets/lib/animate/animate.min.css}" rel="stylesheet" href="../static/assets/lib/animate/animate.min.css"/>
 
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Customized Bootstrap Stylesheet -->
+  <link th:href="@{/static/assets/css/bootstrap.min.css}" rel="stylesheet" href="../static/assets/css/bootstrap.min.css"/>
 
-    <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet" />
-    <link href="css/login.css" rel="stylesheet"/>
-  </head>
-
-  <body>
+  <!-- Template Stylesheet -->
+  <link th:href="@{/static/assets/css/style.css}" rel="stylesheet" href="../static/assets/css/style.css"/>
+  <link th:href="@{/static/assets/css/login.css}" rel="stylesheet" href="../static/assets/css/login.css"/>
+</head>
+<body>
     <!-- Spinner Start -->
     <div
       id="spinner"
@@ -248,30 +238,26 @@
                 <div class="tabs-content">
                       <!-- TABS CONTENT LOGIN -->
                   <div id="login-tab-content" class="active">
-                    <form class="login-form" action="" method="post">
+                    <form class="login-form" action="/loginProc" th:action="@{/loginProc}" method="post">
                       <input type="text" class="input" id="user_login" name="email" autocomplete="off" placeholder="Email or Username" required>
-                      <input type="password" class="input" id="user_pass" name="password" autocomplete="off" placeholder="Password" required>
+                      <input type="password" class="input" id="login_user_pass" name="password" autocomplete="off" placeholder="Password" required>
                       <input type="checkbox" class="checkbox" checked id="remember_me">
                       <label for="remember_me">Remember me</label>
-                      <input type="submit" class="button" value="Login">
+                      <button type="button" class="button" onclick="submitForm()">Login</button>
                     </form>
-                    <div class="help-action">
-                      <p><i class="fa fa-arrow-left" aria-hidden="true"></i><a class="forgot" href="#">Forgot your password?</a></p>
-                    </div>
                   </div>
                       <!-- TABS CONTENT SIGNUP -->
                   <div id="signup-tab-content">
-                    <form class="signup-form" action="/signup" method="post">
+                    <form class="signup-form" action="/joinProc" th:action="@{/joinProc}" method="post">
                       <input type="email" class="input" id="user_email" name="email" autocomplete="off" placeholder="Email" required>
                       <input type="text" class="input" id="user_name" name="nickname" autocomplete="off" placeholder="Username" required>
                       <input type="password" class="input" id="user_pass" name="password" autocomplete="off" placeholder="Password" required>
                       <input type="password" class="input" id="user_pass_confirm" name="confirmPassword" autocomplete="off" placeholder="Confirm Password" required>
+                      <input type="text" class="input" id="user_phone" name="phone" autocomplete="off" placeholder="Phone" required>
                       <input type="text" class="input" id="user_imageUrl" name="imageUrl" autocomplete="off" placeholder="Image URL (optional)">
                       <input type="submit" class="button" value="Sign Up">
                     </form>
                     <div class="help-action">
-                      <p>By signing up, you agree to our</p>
-                      <p><i class="fa fa-arrow-left" aria-hidden="true"></i><a class="agree" href="#">Terms of service</a></p>
                     </div>
                   </div>
                 </div>
@@ -283,8 +269,6 @@
     <!-- Contact End -->
 
 
-      </div>
-    </div>
     <!-- Navbar End -->
 
     <!-- Full Screen Search Start -->
@@ -318,27 +302,29 @@
     </div>
     <!-- Full Screen Search End -->
 
-   
-    
+
+
 
     <!-- Vendor Start -->
     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
       <div class="container py-5 mb-5">
         <div class="bg-white">
           <div class="owl-carousel vendor-carousel">
-            <img src="img/김성환짐.jpg" alt="" />
-            <img src="img/버핏짐.jpg" alt="" />
-            <img src="img/로그짐.png" alt="" />
-            <img src="img/suit gym.jpg" alt="" />
-            <img src="img/spoany.jpg" alt="" />
-            <img src="img/feature.jpg" alt="" />
-            <img src="img/랩스.jpg" alt="" />
-            <img src="img/독한.jpg" alt="" />
-            <img src="img/플랜.jpg" alt="" />
+            <img src="@{/assets/img/kimseonghwan.jpg}" alt="Kim Seonghwan Gym" />
+            <img src="@{/assets/img/buffetgym.jpg}" alt="Buffet Gym" />
+            <img src="@{/assets/img/roggym.jpg}" alt="Rog Gym" />
+            <img src="@{/assets/img/suitgym.jpg}" alt="Suit Gym" />
+            <img src="@{/assets/img/spoany.jpg}" alt="Spoany" />
+            <img src="@{/assets/img/feature.jpg}" alt="Feature" />
+            <img src="@{/assets/img/dokhan.jpg}" alt="Dokhan" />
+            <img src="@{/assets/img/plan.jpg}" alt="Plan" />
+            <img src="@{/assets/img/labs.jpg}" alt="Labs" />
           </div>
         </div>
       </div>
     </div>
+    <!-- Vendor End -->
+
     <!-- Vendor End -->
 
     <!-- Footer Start -->
@@ -506,7 +492,11 @@
         </div>
       </div>
     </div>
-    <!-- Footer End -->
+      </div>
+    </div>
+
+
+       <!-- Footer End -->
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded back-to-top"
@@ -514,17 +504,17 @@
     ></a>
 
     <!-- JavaScript Libraries -->
-    <script src="vendor/js/moment.min.js"></script>
+    <script th:src="@{/static/static/assets/vendor/js/moment.min.js}" src="../static/assets/vendor/js/moment.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/wow/wow.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/counterup/counterup.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="js/login.js"></script>
+    <script th:src="@{/static/assets/lib/wow/wow.min.js}" src="../static/assets/lib/wow/wow.min.js"></script>
+    <script th:src="@{/static/assets/lib/easing/easing.min.js}" src="../static/assets/lib/easing/easing.min.js"></script>
+    <script th:src="@{/static/assets/lib/waypoints/waypoints.min.js}" src="../static/assets/lib/waypoints/waypoints.min.js"></script>
+    <script th:src="@{/static/assets/lib/counterup/counterup.min.js}" src="../static/assets/lib/counterup/counterup.min.js"></script>
+    <script th:src="@{/static/assets/lib/owlcarousel/owl.carousel.min.js}" src="../static/assets/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script th:src="@{/static/assets/js/login.js}" src="../static/assets/js/login.js"></script>
 
     <!-- Template Javascript -->
-    <script src="js/main.js"></script>
-  </body>
+    <script th:src="@{/static/assets/js/main.js}" src="../static/assets/js/main.js"></script>
+</body>
 </html>

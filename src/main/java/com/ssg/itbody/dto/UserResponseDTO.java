@@ -2,28 +2,32 @@ package com.ssg.itbody.dto;
 
 
 import com.ssg.itbody.entity.UserEntity;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-import java.time.LocalDateTime;
 
 
 @Getter
 @Setter
+@Builder
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserResponseDTO {
     private Long userId;
     private String nickname;
     private String imageUrl;
+    private String email;
+    private String authority;
 
 
     public static UserResponseDTO from(UserEntity userEntity) {
-        UserResponseDTO dto = new UserResponseDTO();
-        dto.setUserId(userEntity.getUserId());
-        dto.setNickname(userEntity.getNickname());
-        dto.setImageUrl(userEntity.getImageUrl());
-
-
-        return dto;
+        return UserResponseDTO.builder()
+                .userId(userEntity.getUserId())
+                .email(userEntity.getEmail())
+                .nickname(userEntity.getNickname())
+                .authority(userEntity.getAuthority().name())
+                .imageUrl(userEntity.getImageUrl())
+                .build();
     }
 
 }
