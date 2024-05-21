@@ -70,7 +70,7 @@ public class UserEntity implements UserDetails {
     private Authority authority;
 
     @Builder
-    public UserEntity(String nickname,String email, String password, String phone, String imageUrl,LocalDateTime createdAt,LocalDateTime updatedAt ,MembershipGrade membershipGrade, Authority authority) {
+    public UserEntity(String nickname, String email, String password, String phone, String imageUrl, LocalDateTime createdAt, LocalDateTime updatedAt, MembershipGrade membershipGrade, Authority authority) {
         this.nickname = nickname;
         this.email = email;
         this.password = password;
@@ -121,4 +121,6 @@ public class UserEntity implements UserDetails {
     public static UserEntity createUser() {
         return new UserEntity();
     }
+
+
 }

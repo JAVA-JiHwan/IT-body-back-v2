@@ -2,6 +2,8 @@ package com.ssg.itbody.service;
 
 import com.ssg.itbody.dto.UserDTO;
 import com.ssg.itbody.entity.UserEntity;
+import com.ssg.itbody.enums.Authority;
+import com.ssg.itbody.enums.MembershipGrade;
 import com.ssg.itbody.exception.DuplicateUserException;
 import com.ssg.itbody.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -37,8 +39,8 @@ public class UserService {
                 .imageUrl(userDTO.getImageUrl())
                 .createdAt(userDTO.getCreatedAt())
                 .updatedAt(userDTO.getUpdatedAt())
-                .membershipGrade(userDTO.getMembershipGrade())
-                .authority(userDTO.getAuthority())
+                .membershipGrade(MembershipGrade.TRAINER)
+                .authority(Authority.ADMIN)
                 .build();
 
         userRepository.save(userEntity);
