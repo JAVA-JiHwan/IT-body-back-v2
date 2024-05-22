@@ -1,218 +1,122 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
-      xmlns:layout="http://www.w3.org/1999/xhtml">
 
+      xmlns:layout="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8"/>
     <title>Document</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta content="Free HTML Templates" name="keywords"/>
+    <meta content="Free HTML Templates" name="description"/>
 
     <!-- Favicon -->
-<!--    <link href="/images/favicon.ico" rel="icon">-->
-    <!-- Template Stylesheet -->
-    <link href="/assets/css/stylesWarehouseList.css" rel="stylesheet">
+    <link href="/static/assets/image/favicon.ico" rel="icon"/>
 
     <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Rubik:wght@400;500;600;700&display=swap"
+            rel="stylesheet"
+    />
 
     <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+            rel="stylesheet"
+    />
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
+            rel="stylesheet"
+    />
 
     <!-- Libraries Stylesheet -->
-    <link href="/assets/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="/assets/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet"/>
+    <link href="/static/assets/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet"/>
+    <link href="/static/assets/lib/animate/animate.min.css" rel="stylesheet"/>
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
-    <script type="text/javascript"
-            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6b0f139097c40018ad6cfd4a3c2c5db8&libraries=services"></script>
-    <!-- Template Stylesheet
-    <link href="assets/css/style.css" rel="stylesheet"> -->
+    <link href="/static/assets/css/bootstrap.min.css" rel="stylesheet"/>
 
-
-    <style>
-
-    </style>
-
+    <!-- Template Stylesheet -->
+    <link href="/static/assets/css/style.css" rel="stylesheet"/>
 </head>
 
 <body>
-<div class="container-xxl position-relative bg-white d-flex p-0">
-    <!-- Spinner Start -->
-    <div id="spinner"
-         class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-            <span class="sr-only">Loading...</span>
+<!-- Spinner Start -->
+<div
+        id="spinner"
+        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center"
+>
+    <div class="spinner"></div>
+</div>
+<!-- Spinner End -->
+
+<!-- Topbar Start -->
+<div class="container-fluid bg-dark px-5 d-none d-lg-block">
+    <div class="row gx-0">
+        <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
+            <div class="d-inline-flex align-items-center" style="height: 45px">
+                <small class="me-3 text-light"><i class="fa fa-map-marker-alt me-2"></i>양재 테크브루</small>
+                <small class="me-3 text-light"><i class="fa fa-phone-alt me-2"></i>+012 345 6789</small>
+                <small class="text-light"><i class="fa fa-envelope-open me-2"></i>info@example.com</small>
+            </div>
+        </div>
+        <div class="col-lg-4 text-center text-lg-end">
+            <div class="d-inline-flex align-items-center" style="height: 45px">
+                <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-twitter fw-normal"></i></a>
+                <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-facebook-f fw-normal"></i></a>
+                <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-linkedin-in fw-normal"></i></a>
+                <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-instagram fw-normal"></i></a>
+                <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle" href=""><i class="fab fa-youtube fw-normal"></i></a>
+            </div>
         </div>
     </div>
-    <!-- Sidebar Start -->
-    <div class="sidebar pe-4 pb-3">
-        <nav class="navbar bg-light navbar-light">
-            <a href="/home" class="navbar-brand mx-4 mb-3">
-                <h3 class="text-primary"><i class="fa fa-truck me-2"></i>2Commerce</h3>
-            </a>
-            <div class="d-flex align-items-center ms-4 mb-4">
-                <div class="position-relative">
-                    <img class="rounded-circle" src="/images/TeamLogo.png" alt="" style="width: 40px; height: 40px;">
-                    <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
-                    </div>
-                </div>
-<!--                <div class="ms-3">-->
-<!--                    <h6 class="mb-0" th:if="${#authorization.expression('isAuthenticated()')}">-->
-<!--                        <span th:text="${id}"></span>님! <br> 역할:-->
-<!--                        <span th:text="${role.substring(5)}"></span>-->
-<!--                    </h6>-->
-<!--                    <h6 class="mb-0" th:unless="${#authorization.expression('isAuthenticated')}">-->
-<!--                        로그인 해주세요.-->
-<!--                    </h6>-->
-<!--                </div>-->
-                <div th:replace="~{/layout/login-info-fragment :: login-info}" />
-            </div>
-            <div class="navbar-nav w-100">
-                <a href="/home" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Home</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-warehouse me-2"></i>창고관리</a>
-                    <div class="dropdown-menu bg-transparent border-0">
-                        <a href="/inventory/warehouselist" class="dropdown-item" id="warehouseList">창고조회</a>
-                        <!--<a href="typography.html" class="dropdown-item">창고등록</a>-->
-                        <!--<a href="element.html" class="dropdown-item">빼도됌</a>-->
-                    </div>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-calculator me-2"></i>발주관리</a>
-                    <div class="dropdown-menu bg-transparent border-0">
-                        <a href="/MgtOrders/MgtOrderCreate" class="dropdown-item" id="mgtordersCreate">발주등록</a>
-                        <a href="/MgtOrders/MgtOrderConfirm" class="dropdown-item" id="mgtordersConfirm">발주확정</a>
-                        <a href="/MgtOrders/MgtOrderSearch" class="dropdown-item" id="mgtordersSearch">발주조회</a>
-                    </div>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-cubes me-2"></i></i>재고관리</a>
-                    <div class="dropdown-menu bg-transparent border-0">
-                        <a href="/inventory/list" class="dropdown-item" id="inventorylist">재고조회</a>
-                    </div>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-plus me-2"></i>입/출고관리</a>
-                    <div class="dropdown-menu bg-transparent border-0">
-                        <a href="/inventory/whInOut/list/1" class="dropdown-item" id="whInlist">입/출고조회</a>
-                    </div>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-credit-card me-2"></i>정산관리</a>
-                    <div class="dropdown-menu bg-transparent border-0">
-                        <a href="/settlement/list" class="dropdown-item">정산조회</a>
-                    </div>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-credit-card me-2"></i>상품관리</a>
-                    <div class="dropdown-menu bg-transparent border-0">
-                        <a href="/product/list" class="dropdown-item" id="productlist">상품조회</a>
-                        <a href="/product/register" class="dropdown-item" id="productRegister">상품추가</a>
+</div>
+<!-- Topbar End -->
 
-                    </div>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-coins me-2"></i>주문관리</a>
-                    <div class="dropdown-menu bg-transparent border-0">
-                        <a href="/smorder/listall" class="dropdown-item" id="smorderlist">전체주문조회</a>
-                        <a href="/smorder/listall?orderId=&customerId=&status=COMPLETE" class="dropdown-item" id="smorderComplete">배송완료 주문조회</a>
-                        <a href="/smorder/listall?orderId=&customerId=&status=PREPARING" class="dropdown-item" id="smorderListCancle">배송중 주문조회</a>
-                        <a href="/smorder/listall?orderId=&customerId=&status=CANCEL" class="dropdown-item" id="smorderListPrepare">취소주문조회</a>
-
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </div>
-    <!-- Sidebar End -->
-
-<!-- Content Start -->
-<div class="content">
-
-    <!-- Navbar Start -->
-    <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
-        <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
-            <h2 class="text-primary mb-0"><i class="fa fa-hashtag"></i></h2>
+<!-- Navbar & Carousel Start -->
+<div class="container-fluid position-relative p-0">
+    <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
+        <a href="index.html" class="navbar-brand p-0">
+            <h1 class="m-0"><i class="fa fa-user-tie me-2"></i>IT!Body</h1>
         </a>
-        <a href="#" class="sidebar-toggler flex-shrink-0">
-            <i class="fa fa-bars"></i>
-        </a>
-        <form class="d-none d-md-flex ms-4 position-relative">
-            <input class="form-control border-0" type="search" placeholder="Search" id="searchInput">
-            <ul id="autocompleteList" class="position-absolute list-unstyled bg-light w-100 shadow"
-                style="top: 100%;"></ul>
-        </form>
-        <div class="navbar-nav align-items-center ms-auto">
-
-
-<!--            <div class="nav-item dropdown">-->
-<!--                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">-->
-<!--                    <img class="rounded-circle me-lg-2" src="/images/TeamLogo.png" alt=""-->
-<!--                         style="width: 40px; height: 40px;">-->
-<!--                    <span class="d-none d-lg-inline-flex" th:if="${#authorization.expression('isAnonymous()')}"-->
-<!--                          th:text="'로그인'">로그인</span>-->
-<!--                    <span class="d-none d-lg-inline-flex" th:unless="${#authorization.expression('isAnonymous()')}"-->
-<!--                          th:text="${id} + '님!'"></span>-->
-<!--                </a>-->
-<!--                <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">-->
-<!--                    <a href="#" class="dropdown-item">My Profile</a>-->
-<!--                    <a href="#" class="dropdown-item">Settings</a>-->
-<!--                    <a href="/login/logout" class="dropdown-item" sec:authorize="isAuthenticated()">Log Out</a>-->
-<!--                    <a href="/login/login" class="dropdown-item" sec:authorize="isAnonymous()">Log in</a>-->
-<!--                </div>-->
-<!--            </div>-->
-                <div th:replace="~{/layout/login-info-side.html :: login-info-side}"></div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="fa fa-bars"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto py-0">
+                <a href="index.html" class="nav-item nav-link active">홈</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">회원 이용</a>
+                    <div class="dropdown-menu m-0">
+                        <a href="price.html" class="dropdown-item">IT!Body 맴버십 회원권</a>
+                        <a href="service.html" class="dropdown-item">IT!Body 맴버십 회원권 결제</a>
+                        <a href="입장입력화면.html" class="dropdown-item">회원 입장하기</a>
+                    </div>
+                </div>
+                <a href="contact.html" class="nav-item nav-link">센터 등록</a>
+            </div>
+            <button type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal">
+                <i class="fa fa-search"></i>
+            </button>
+            <div th:include="~{/layout/login-info-fragment :: login-info}"/>
         </div>
     </nav>
-
-    <!-- Navbar End -->
-    <div layout:fragment="content">
-
-    </div>
-
-    <!-- Footer Start -->
-    <div class="container-fluid pt-4 px-4">
-
-        <div class="bg-light rounded-top p-4">
-            <div class="row">
-                <div class="col-12 col-sm-6 text-center text-sm-start">
-                    &copy; <a href="#">2Commerce-Traning-Project by.2Commerce</a>, All Right Reserved.
-                </div>
-                <div class="col-12 col-sm-6 text-center text-sm-end">
-                    <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                    Designed By <a href="https://htmlcodex.com">2Commerce</a>
-                    </br>
-                    Distributed By <a class="border-bottom" href="https://themewagon.com"
-                                      target="_blank">2Commerce</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Footer End -->
 </div>
-<!-- Content End -->
 
-<!-- Back to Top -->
-<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
-</div>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="/assets/lib/chart/chart.min.js"></script>
-<script src="/assets/lib/easing/easing.min.js"></script>
-<script src="/assets/lib/waypoints/waypoints.min.js"></script>
-<script src="/assets/lib/owlcarousel/owl.carousel.min.js"></script>
-<script src="/assets/lib/tempusdominus/js/moment.min.js"></script>
-<script src="/assets/lib/tempusdominus/js/moment-timezone.min.js"></script>
-<script src="/assets/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
-<script src="/assets/jsReal/main.js"></script>
-<script src="/assets/jsReal/kakaoMap.js"></script>
-<script src="/assets/jsReal/houseList.js"></script>
-<script src="/assets/jsReal/home.js"></script>
+<script src="/static/assets/lib/wow/wow.min.js"></script>
+<script src="/static/assets/lib/easing/easing.min.js"></script>
+<script src="/static/assets/lib/waypoints/waypoints.min.js"></script>
+<script src="/static/assets/lib/counterup/counterup.min.js"></script>
+<script src="/static/assets/lib/owlcarousel/owl.carousel.min.js"></script>
+
+<!-- Template Javascript -->
+<script src="/static/assets/js/main.js"></script>
+</body>
+</html>
 
 
 </body>
