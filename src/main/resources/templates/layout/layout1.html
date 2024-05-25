@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
-
       xmlns:layout="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <meta content="Free HTML Templates" name="keywords"/>
@@ -43,14 +43,7 @@
 </head>
 
 <body>
-<!-- Spinner Start -->
-<div
-        id="spinner"
-        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center"
->
-    <div class="spinner"></div>
-</div>
-<!-- Spinner End -->
+
 
 <!-- Topbar Start -->
 <div class="container-fluid bg-dark px-5 d-none d-lg-block">
@@ -100,7 +93,7 @@
             <button type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal">
                 <i class="fa fa-search"></i>
             </button>
-            <div th:include="~{/layout/login-info-fragment :: login-info}"/>
+            <div th:replace="~{/layout/login-info-fragment :: login-info}" />
         </div>
     </nav>
 </div>

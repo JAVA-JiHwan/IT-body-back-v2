@@ -10,6 +10,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+//import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -76,7 +77,7 @@ public class UserEntity implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> authorities = new ArrayList<>();
-        authorities.add(new SimpleGrantedAuthority("GRADE_" + membershipGrade.getMembershipGrade())); // 사용자의 역할을 가져와서 "ROLE_"을 붙여서 반환
+        authorities.add(new SimpleGrantedAuthority("ROLE_" + membershipGrade.getMembershipGrade())); // 사용자의 역할을 가져와서 "ROLE_"을 붙여서 반환
         return authorities;
     }
 
@@ -85,10 +86,9 @@ public class UserEntity implements UserDetails {
         return password;
     }
 
-
     @Override
     public String getUsername() {
-        return email;
+        return nickname;
     }
 
     @Override

@@ -3,7 +3,7 @@ package com.ssg.itbody.controller;
 
 import com.ssg.itbody.dto.UserDTO;
 import com.ssg.itbody.exception.DuplicateUserException;
-import com.ssg.itbody.service.UserService;
+import com.ssg.itbody.service.JoinService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class UserController {
 
-    private final UserService userService;
+    private final JoinService joinService;
 
     //로그인 페이지 라우팅,에러 시 에러 처리한 문구 실행
     @GetMapping("/login")
@@ -60,11 +60,23 @@ public class UserController {
     public ResponseEntity<String> joinProcess(@ModelAttribute UserDTO userDTO) {
         log.info(userDTO.getNickname());
         try {
-            userService.joinProcess(userDTO);
+            joinService.joinProcess(userDTO);
             return ResponseEntity.ok("회원가입이 완료되었습니다.");
         } catch (DuplicateUserException d) {
             return ResponseEntity.badRequest().body("이미 존재하는 회원입니다.");
         }
     }
+
+//    @PostMapping("/loginProc")
+//    public String loginProcess(@RequestParam String email, @RequestParam String password, Model model) {
+//        boolean isAuthenticated = joinService.authenticate(email, password);
+//        if (isAuthenticated) {
+//            // 인증 성공 시, 세션 등에 사용자 정보를 저장하는 로직을 추가할 수 있습니다.
+//            return "redirect:/index"; // 로그인 성공 시 리디렉션할 페이지
+//        } else {
+//            model.addAttribute("error", "아이디나 비밀번호가 잘못되었습니다.");
+//            return "login/login"; // 로그인 실패 시 다시 로그인 페이지로
+//        }
+//    }
 }
 

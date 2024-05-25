@@ -12,12 +12,21 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 public class CommonControllerAdvice {
     @ModelAttribute
     public void addCommonAttributes(Model model) {
-        String id = SecurityContextHolder.getContext().getAuthentication().getName();
+//        String id = SecurityContextHolder.getContext().getAuthentication().getName();
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        String membershipGrade = authentication.getAuthorities().iterator().next().getAuthority();
+//        model.addAttribute("userId", id);
+//        model.addAttribute("membershipGrade", membershipGrade);
+        // SecurityContext에서 인증된 사용자의 이름(일반적으로 username 또는 email)을 가져옴
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String membershipGrade = authentication.getAuthorities().iterator().next().getAuthority();
-        model.addAttribute("userId", id);
-        model.addAttribute("membershipGrade", membershipGrade);
+        if (authentication != null && authentication.isAuthenticated()) {
+            String name = authentication.getName(); // 사용자 이메일
+            String membershipGrade = authentication.getAuthorities().iterator().next().getAuthority(); // 첫 번째 권한을 가져옴
+
+            model.addAttribute("nickname", name);
+            model.addAttribute("membershipGrade", membershipGrade);
+        }
+
+
     }
-
-
 }

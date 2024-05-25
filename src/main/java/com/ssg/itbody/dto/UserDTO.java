@@ -1,5 +1,6 @@
 package com.ssg.itbody.dto;
 
+import com.ssg.itbody.entity.UserEntity;
 import com.ssg.itbody.enums.MembershipGrade;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -24,11 +25,10 @@ public class UserDTO {
     @Pattern(regexp = "^[a-zA-Z0-9!@#$%^&*./]*$", message = "잘못된 비밀번호 형식입니다.")
     @Size(min = 10, message = "비밀번호는 최소 10자 이상이여야 합니다.")
     private String password;
-    
+
     private String phone;
     private String gender;
     private String healthStatus;
     private String imageUrl;
     private MembershipGrade membershipGrade;
-
 }
