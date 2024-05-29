@@ -10,8 +10,10 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.multipart.MultipartFile;
 //import org.springframework.security.core.userdetails.UserDetails;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -19,7 +21,6 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-@ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "members")
@@ -53,15 +54,17 @@ public class UserEntity implements UserDetails {
     @Column(name = "health_status")
     private String healthStatus;
 
-    @Column(name = "photo")
-    private String imageUrl;
+    @Column(name = "profileImgName")
+    private String profileImgName;
+    @Column(name = "profileImgPath")
+    private String profileImgPath;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "membership_grade")
     private MembershipGrade membershipGrade;
 
     @Builder
-    public UserEntity(Long userId, String nickname, String email, String password, String phone, String gender, String healthStatus, String imageUrl, MembershipGrade membershipGrade) {
+    public UserEntity(Long userId, String nickname, String email, String password, String phone, String gender, String healthStatus, String profileImgName, String profileImgPath, MembershipGrade membershipGrade) {
         this.userId = userId;
         this.nickname = nickname;
         this.email = email;
@@ -69,7 +72,8 @@ public class UserEntity implements UserDetails {
         this.phone = phone;
         this.gender = gender;
         this.healthStatus = healthStatus;
-        this.imageUrl = imageUrl;
+        this.profileImgName = profileImgName;
+        this.profileImgPath = profileImgPath;
         this.membershipGrade = membershipGrade;
     }
 
@@ -111,5 +115,8 @@ public class UserEntity implements UserDetails {
         return true;
     }
 
+//    public void setImage(MultipartFile file) throws IOException {
+//        this.imageUrl = file.getBytes();
+//    }
 
 }

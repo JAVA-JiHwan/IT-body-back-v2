@@ -29,6 +29,7 @@ public class UserDTO {
     private String phone;
     private String gender;
     private String healthStatus;
-    private String imageUrl;
+    private String profileImgName;
+    private String profileImgPath;
     private MembershipGrade membershipGrade;
 }

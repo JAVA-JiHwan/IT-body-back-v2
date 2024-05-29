@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>My Page</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta content="Free HTML Templates" name="keywords"/>
+    <meta content="Free HTML Templates" name="description"/>
+
+    <!-- Favicon -->
+    <link th:href="@{/assets/image/favicon.ico}" rel="icon"/>
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Rubik:wght@400;500;600;700&display=swap"
+          rel="stylesheet"/>
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet"/>
+
+    <!-- Libraries Stylesheet -->
+    <link rel="stylesheet" th:href="@{/assets/css/bootstrap.min.css}" href="../../static/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}" href="../../static/assets/css/style.css">
+    <link rel="stylesheet" th:href="@{/assets/lib/owlcarousel/assets/owl.carousel.min.css}"
+          href="../../static/assets/lib/owlcarousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" th:href="@{/assets/lib/animate/animate.min.css}"
+          href="../../static/assets/lib/animate/animate.min.css">
+</head>
+<body>
+<div id="spinner"
+     class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+    <div class="spinner"></div>
+</div>
+<div class="container-fluid position-relative p-0">
+    <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
+        <a href="/" class="navbar-brand p-0">
+            <h1 class="m-0"><i class="fa fa-user-tie me-2"></i>IT!Body</h1>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="fa fa-bars"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto py-0">
+                <a href="/" class="nav-item nav-link active">홈</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">회원 이용</a>
+                    <div class="dropdown-menu m-0">
+                        <a href="/price.html" class="dropdown-item">IT!Body 맴버십 회원권</a>
+                        <a href="/service.html" class="dropdown-item">IT!Body 맴버십 회원권 결제</a>
+                        <a href="/입장입력화면.html" class="dropdown-item">회원 입장하기</a>
+                    </div>
+                </div>
+                <a href="/contact.html" class="nav-item nav-link">센터 등록</a>
+            </div>
+            <button type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal">
+                <i class="fa fa-search"></i>
+            </button>
+            <h6 class="nav-item nav-link m-0" th:if="${#authorization.expression('isAuthenticated()')}">
+                <span th:text="${nickname}"></span>님! <span>역할:</span> <span
+                    th:text="${membershipGrade.substring(5)}"></span>
+                <a th:href="@{/login/logout}" class="btn btn-primary">로그아웃</a>
+            </h6>
+        </div>
+    </nav>
+</div>
+
+<h1>My Page</h1>
+<div>
+    <label>User ID:</label>
+    <span th:text="${user.userId}"></span><br/>
+    <label>Email:</label>
+    <span th:text="${user.email}"></span><br/>
+    <label>Phone:</label>
+    <span th:text="${user.phone}"></span><br/>
+    <label>Health Status:</label>
+    <span th:text="${user.healthStatus}"></span><br/>
+    <label>Profile Image Name:</label>
+    <span th:text="${user.profileImgName}"></span><br/>
+
+
+    <label>Membership Grade:</label>
+    <span th:text="${user.membershipGrade}"></span><br/>
+</div>
+<div>
+    <img id="imgId" th:src="@{/mypage/{userId}/profile-image(userId=${user.userId})}" width="100" height="100"
+         alt="첨부이미지" th:if="${user.profileImgPath != null}"/>
+</div>
+<div>
+    <a th:href="@{/mypage/edit/{userId}(userId=${user.userId})}">회원 정보 수정</a>
+</div>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script th:src="@{/assets/lib/wow/wow.min.js}"></script>
+<script th:src="@{/assets/lib/easing/easing.min.js}"></script>
+<script th:src="@{/assets/lib/counterup/counterup.min.js}"></script>
+<script th:src="@{/assets/js/main.js}"></script>
+<script th:src="@{/assets/lib/waypoints/waypoints.min.js}"></script>
+<script th:src="@{/assets/lib/owlcarousel/owl.carousel.min.js}"></script>
+</body>

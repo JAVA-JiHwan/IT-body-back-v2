@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="ko">
-
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta content="Free HTML Templates" name="keywords" />
     <meta content="Free HTML Templates" name="description" />
     <title>FullCalendar Example</title>
-    <link rel=" shortcut icon" href="image/favicon.ico">
+    !-- Favicon -->
+    <link th:href="@{/static/assets/image/favicon.ico}" rel="icon"/>
 
 
     <!-- Google Web Fonts -->
@@ -29,85 +30,27 @@
     />
 
     <!-- Libraries Stylesheet -->
-    <link href="asserts/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
-    <link href="asserts/lib/animate/animate.min.css" rel="stylesheet" />
-
+    <link rel="stylesheet" th:href="@{/static/assets/lib/owlcarousel/assets/owl.carousel.min.css}" href="../static/assets/lib/owlcarousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" th:href="@{/static/assets/lib/animate/animate.min.css}" href="../static/assets/lib/animate/animate.min.css">
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
-
+    <link rel="stylesheet" th:href="@{/static/assets/css/bootstrap.min.css}" href="../static/assets/css/bootstrap.min.css">
     <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet" />
-
-    <link rel="stylesheet" href="vendor/css/fullcalendar.min.css" />
-    <link rel="stylesheet" href="vendor/css/calbootstrap.min.css">
-    <link rel="stylesheet" href='vendor/css/select2.min.css' />
-    <link rel="stylesheet" href='vendor/css/bootstrap-datetimepicker.min.css' />
-
-   
-
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" th:href="@{/static/assets/css/style.css}" href="../static/assets/css/style.css">
+    <link rel="stylesheet" th:href="@{/static/assets/vendor/css/fullcalendar.min.css}" href="../static/assets/vendor/css/fullcalendar.min.css">
+    <link rel="stylesheet" th:href="@{/static/assets/vendor/css/calbootstrap.min.css}" href="../static/assets/vendor/css/calbootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/static/assets/vendor/css/select2.min.css}" href="/static/assets/vendor/css/select2.min.css">
+    <link rel="stylesheet" th:href="@{/static/assets/vendor/css/bootstrap-datetimepicker.min.css}" href="/static/assets/vendor/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" th:href="@{/static/assets/css/main.css}" href="/static/assets/css/main.css">
 
 </head>
 
 <body>
     <!-- Spinner Start -->
-    <div
-      id="spinner"
-      class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center"
-    >
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
       <div class="spinner"></div>
     </div>
     <!-- Spinner End -->
 
-    <!-- Topbar Start -->
-    <div class="container-fluid bg-dark px-5 d-none d-lg-block">
-      <div class="row gx-0">
-        <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
-          <div class="d-inline-flex align-items-center" style="height: 45px">
-            <small class="me-3 text-light"
-              ><i class="fa fa-map-marker-alt me-2"></i>123 Street, New York,
-              USA</small
-            >
-            <small class="me-3 text-light"
-              ><i class="fa fa-phone-alt me-2"></i>+012 345 6789</small
-            >
-            <small class="text-light"
-              ><i class="fa fa-envelope-open me-2"></i>info@example.com</small
-            >
-          </div>
-        </div>
-        <div class="col-lg-4 text-center text-lg-end">
-          <div class="d-inline-flex align-items-center" style="height: 45px">
-            <a
-              class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2"
-              href=""
-              ><i class="fab fa-twitter fw-normal"></i
-            ></a>
-            <a
-              class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2"
-              href=""
-              ><i class="fab fa-facebook-f fw-normal"></i
-            ></a>
-            <a
-              class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2"
-              href=""
-              ><i class="fab fa-linkedin-in fw-normal"></i
-            ></a>
-            <a
-              class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2"
-              href=""
-              ><i class="fab fa-instagram fw-normal"></i
-            ></a>
-            <a
-              class="btn btn-sm btn-outline-light btn-sm-square rounded-circle"
-              href=""
-              ><i class="fab fa-youtube fw-normal"></i
-            ></a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Topbar End -->
 
     <!-- Navbar Start -->
     <div class="container-fluid position-relative p-0">
@@ -356,18 +299,18 @@
     </div>
     <!-- /.container -->
 
-    <script src="vendor/js/jquery.min.js"></script>
-    <script src="vendor/js/calbootstrap.min.js"></script>
-    <script src="vendor/js/moment.min.js"></script>
-    <script src="vendor/js/fullcalendar.min.js"></script>
-    <script src="vendor/js/ko.js"></script>
-    <script src="vendor/js/select2.min.js"></script>
-    <script src="vendor/js/bootstrap-datetimepicker.min.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/addEvent.js"></script>
-    <script src="js/editEvent.js"></script>
-    <script src="js/etcSetting.js"></script>
-    <script src="js/calmain.js"></script>
+    <script th:src="@{/static/assets/vendor/js/jquery.min.js}"></script>
+    <script th:src="@{/static/assets/vendor/js/calbootstrap.min.js}"></script>
+    <script th:src="@{/static/assets/vendor/js/moment.min.js}"></script>
+    <script th:src="@{/static/assets/vendor/js/fullcalendar.min.js}"></script>
+    <script th:src="@{/static/assets/vendor/js/ko.js}"></script>
+    <script th:src="@{/static/assets/vendor/js/select2.min.js}"></script>
+    <script th:src="@{/static/assets/vendor/js/bootstrap-datetimepicker.min.js}"></script>
+    <script th:src="@{/static/assets/js/main.js}"></script>
+    <script th:src="@{/static/assets/js/addEvent.js}"></script>
+    <script th:src="@{/static/assets/js/editEvent.js}"></script>
+    <script th:src="@{/static/assets/js/etcSetting.js}"></script>
+    <script th:src="@{/static/assets/js/calmain.js}"></script>
 </body>
 
 </html>
