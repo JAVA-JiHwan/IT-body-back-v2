@@ -63,6 +63,12 @@ public class UserEntity implements UserDetails {
     @Column(name = "membership_grade")
     private MembershipGrade membershipGrade;
 
+    @OneToMany(mappedBy = "trainer", fetch = FetchType.LAZY)
+    private List<Reservation> trainerReservations;
+
+    @OneToMany(mappedBy = "member", fetch = FetchType.LAZY)
+    private List<Reservation> memberReservations;
+
     @Builder
     public UserEntity(Long userId, String nickname, String email, String password, String phone, String gender, String healthStatus, String profileImgName, String profileImgPath, MembershipGrade membershipGrade) {
         this.userId = userId;
