@@ -2,16 +2,16 @@ package com.ssg.itbody.service;
 
 import com.ssg.itbody.entity.Reservation;
 import com.ssg.itbody.repository.ReservationRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class ReservationService {
 
-    @Autowired
-    private ReservationRepository reservationRepository;
+    private final ReservationRepository reservationRepository;
 
     public Reservation saveReservation(Reservation reservation) {
         return reservationRepository.save(reservation);
@@ -23,5 +23,13 @@ public class ReservationService {
 
     public List<Reservation> getReservationsByMember(Long memberId) {
         return reservationRepository.findByMember_UserId(memberId);
+    }
+
+    public Reservation findById(Long id) {
+        return reservationRepository.findById(id).orElseThrow(() -> new RuntimeException("Reservation not found with id " + id));
+    }
+
+    public void deleteReservation(Long id) {
+        reservationRepository.deleteById(id);
     }
 }

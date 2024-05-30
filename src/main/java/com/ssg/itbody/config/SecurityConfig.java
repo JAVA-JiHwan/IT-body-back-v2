@@ -49,9 +49,10 @@ public class SecurityConfig {
                         .requestMatchers("/static/assets/css/**", "/static/assets/js/**", "/static/assets/img/**", "/static/assets/lib/**", "/static/assets/vendor/**", "/static/assets/image/**", "/uploads/**").permitAll()
                         .requestMatchers("/layout", "/expired").permitAll()
                         .requestMatchers("/login/login", "/login/join", "/login/loginProc", "/login/joinProc", "/login/logout", "/mypage/**").permitAll()
-                        .anyRequest().hasRole("트레이너")
+                        .requestMatchers("/reservations/create").permitAll()
+                        .anyRequest().hasAnyRole("트레이너", "회원")
 
-                        
+
                 );
 //        로그인 처리
         http

@@ -62,4 +62,8 @@ public class UserService {
         inputStream.close();
         return imageByteArray;
     }
+
+    public UserEntity findById(Long id) {
+        return userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found id" + id));
+    }
 }
