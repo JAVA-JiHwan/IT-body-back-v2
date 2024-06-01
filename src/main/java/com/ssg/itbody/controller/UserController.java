@@ -1,18 +1,13 @@
 package com.ssg.itbody.controller;
 
 import com.ssg.itbody.dto.UserDTO;
-import com.ssg.itbody.dto.UserResponseDTO;
-import com.ssg.itbody.dto.UserUpdateDTO;
 import com.ssg.itbody.exception.DuplicateUserException;
 import com.ssg.itbody.service.JoinService;
-import com.ssg.itbody.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
@@ -38,6 +33,7 @@ public class UserController {
                         @RequestParam(value = "error", required = false) String error,
                         @RequestParam(value = "exception", required = false) String exception, Model model) {
         if ("true".equals(expired)) {
+
             model.addAttribute("message", "다른 곳에서 접근되었습니다, 연결을 종료합니다");
         }
         model.addAttribute("error", error);

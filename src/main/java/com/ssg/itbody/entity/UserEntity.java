@@ -1,5 +1,6 @@
 package com.ssg.itbody.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.ssg.itbody.enums.MembershipGrade;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -64,9 +65,11 @@ public class UserEntity implements UserDetails {
     private MembershipGrade membershipGrade;
 
     @OneToMany(mappedBy = "trainer", fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<Reservation> trainerReservations;
 
     @OneToMany(mappedBy = "member", fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<Reservation> memberReservations;
 
     @Builder
