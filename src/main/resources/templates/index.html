@@ -3,6 +3,7 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8"/>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IT!Body - IT!Body main</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -234,102 +235,102 @@
     </div>
     <!-- Facts Start -->
 
-    <!-- About Start -->
-    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div
-                    class="section-title text-center position-relative pb-3 mb-5 mx-auto"
-                    style="max-width: 600px"
-            >
-                <h5 class="fw-bold text-primary text-uppercase">센터 등록</h5>
-                <h1 class="mb-0">센터를 등록해주세요</h1>
-            </div>
-            <div class="row g-0">
-                <div class="col-md-6">
-                    <div class="input-group mb-3">
-                        <input
-                                type="text"
-                                class="form-control"
-                                placeholder="헬스장 이름 또는 지역 입력"
-                                aria-label="Search gyms"
-                                aria-describedby="search-btn"
-                        />
-                        <button class="btn btn-primary" type="button" id="search-btn">
-                            <i class="bi bi-search"></i>
-                        </button>
-                    </div>
-                    <p class="mb-4">
-                        헬스장의 이벤트 정보 확인 및 PT(개인 트레이닝) 수업 예약, 상담
-                        예약 기능을 제공합니다.
-                    </p>
-                    <div
-                            class="d-flex align-items-center mb-4 wow fadeIn"
-                            data-wow-delay="0.6s"
-                    >
-                        <div
-                                class="bg-primary d-flex align-items-center justify-content-center rounded"
-                                style="width: 60px; height: 60px"
-                        >
-                            <i class="fa fa-phone-alt text-white"></i>
-                        </div>
-                        <div class="ps-4">
-                            <h5 class="mb-2">문의하기</h5>
-                            <h4 class="text-primary mb-0">+012 345 6789</h4>
-                        </div>
-                    </div>
-                    <a
-                            href="/templates/입장입력화면.html"
-                            class="btn btn-primary py-2 px-3 mt-3 align-self-start wow zoomIn"
-                            data-wow-delay="0.9s"
-                            style="font-size: 0.8rem"
-                    >센터 등록 하기</a
-                    >
-                </div>
-                <div id="map" style="width: 100%; height: 350px"></div>
-                <p><em>지도를 클릭해주세요!</em></p>
-                <div id="clickLatlng"></div>
+    <!--    &lt;!&ndash; About Start &ndash;&gt;-->
+    <!--    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">-->
+    <!--        <div class="container py-5">-->
+    <!--            <div-->
+    <!--                    class="section-title text-center position-relative pb-3 mb-5 mx-auto"-->
+    <!--                    style="max-width: 600px"-->
+    <!--            >-->
+    <!--                <h5 class="fw-bold text-primary text-uppercase">센터 등록</h5>-->
+    <!--                <h1 class="mb-0">센터를 등록해주세요</h1>-->
+    <!--            </div>-->
+    <!--            <div class="row g-0">-->
+    <!--                <div class="col-md-6">-->
+    <!--                    <div class="input-group mb-3">-->
+    <!--                        <input-->
+    <!--                                type="text"-->
+    <!--                                class="form-control"-->
+    <!--                                placeholder="헬스장 이름 또는 지역 입력"-->
+    <!--                                aria-label="Search gyms"-->
+    <!--                                aria-describedby="search-btn"-->
+    <!--                        />-->
+    <!--                        <button class="btn btn-primary" type="button" id="search-btn">-->
+    <!--                            <i class="bi bi-search"></i>-->
+    <!--                        </button>-->
+    <!--                    </div>-->
+    <!--                    <p class="mb-4">-->
+    <!--                        헬스장의 이벤트 정보 확인 및 PT(개인 트레이닝) 수업 예약, 상담-->
+    <!--                        예약 기능을 제공합니다.-->
+    <!--                    </p>-->
+    <!--                    <div-->
+    <!--                            class="d-flex align-items-center mb-4 wow fadeIn"-->
+    <!--                            data-wow-delay="0.6s"-->
+    <!--                    >-->
+    <!--                        <div-->
+    <!--                                class="bg-primary d-flex align-items-center justify-content-center rounded"-->
+    <!--                                style="width: 60px; height: 60px"-->
+    <!--                        >-->
+    <!--                            <i class="fa fa-phone-alt text-white"></i>-->
+    <!--                        </div>-->
+    <!--                        <div class="ps-4">-->
+    <!--                            <h5 class="mb-2">문의하기</h5>-->
+    <!--                            <h4 class="text-primary mb-0">+012 345 6789</h4>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                    <a-->
+    <!--                            href="/templates/입장입력화면.html"-->
+    <!--                            class="btn btn-primary py-2 px-3 mt-3 align-self-start wow zoomIn"-->
+    <!--                            data-wow-delay="0.9s"-->
+    <!--                            style="font-size: 0.8rem"-->
+    <!--                    >센터 등록 하기</a-->
+    <!--                    >-->
+    <!--                </div>-->
+    <!--                <div id="map" style="width: 100%; height: 350px"></div>-->
+    <!--                <p><em>지도를 클릭해주세요!</em></p>-->
+    <!--                <div id="clickLatlng"></div>-->
 
-                <script
-                        type="text/javascript"
-                        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c6510954a5a863d3b82bf2433aa4fde0"
-                ></script>
-                <script>
-                    var mapContainer = document.getElementById("map"), // 지도를 표시할 div
-                        mapOption = {
-                            center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-                            level: 3, // 지도의 확대 레벨
-                        };
+    <!--                <script-->
+    <!--                        type="text/javascript"-->
+    <!--                        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c6510954a5a863d3b82bf2433aa4fde0"-->
+    <!--                ></script>-->
+    <!--                <script>-->
+    <!--                    var mapContainer = document.getElementById("map"), // 지도를 표시할 div-->
+    <!--                        mapOption = {-->
+    <!--                            center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표-->
+    <!--                            level: 3, // 지도의 확대 레벨-->
+    <!--                        };-->
 
-                    var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+    <!--                    var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다-->
 
-                    // 지도를 클릭한 위치에 표출할 마커입니다
-                    var marker = new kakao.maps.Marker({
-                        // 지도 중심좌표에 마커를 생성합니다
-                        position: map.getCenter(),
-                    });
-                    // 지도에 마커를 표시합니다
-                    marker.setMap(map);
+    <!--                    // 지도를 클릭한 위치에 표출할 마커입니다-->
+    <!--                    var marker = new kakao.maps.Marker({-->
+    <!--                        // 지도 중심좌표에 마커를 생성합니다-->
+    <!--                        position: map.getCenter(),-->
+    <!--                    });-->
+    <!--                    // 지도에 마커를 표시합니다-->
+    <!--                    marker.setMap(map);-->
 
-                    // 지도에 클릭 이벤트를 등록합니다
-                    // 지도를 클릭하면 마지막 파라미터로 넘어온 함수를 호출합니다
-                    kakao.maps.event.addListener(map, "click", function (mouseEvent) {
-                        // 클릭한 위도, 경도 정보를 가져옵니다
-                        var latlng = mouseEvent.latLng;
+    <!--                    // 지도에 클릭 이벤트를 등록합니다-->
+    <!--                    // 지도를 클릭하면 마지막 파라미터로 넘어온 함수를 호출합니다-->
+    <!--                    kakao.maps.event.addListener(map, "click", function (mouseEvent) {-->
+    <!--                        // 클릭한 위도, 경도 정보를 가져옵니다-->
+    <!--                        var latlng = mouseEvent.latLng;-->
 
-                        // 마커 위치를 클릭한 위치로 옮깁니다
-                        marker.setPosition(latlng);
+    <!--                        // 마커 위치를 클릭한 위치로 옮깁니다-->
+    <!--                        marker.setPosition(latlng);-->
 
-                        var message =
-                            "클릭한 위치의 위도는 " + latlng.getLat() + " 이고, ";
-                        message += "경도는 " + latlng.getLng() + " 입니다";
+    <!--                        var message =-->
+    <!--                            "클릭한 위치의 위도는 " + latlng.getLat() + " 이고, ";-->
+    <!--                        message += "경도는 " + latlng.getLng() + " 입니다";-->
 
-                        var resultDiv = document.getElementById("clickLatlng");
-                        resultDiv.innerHTML = message;
-                    });
-                </script>
-            </div>
-        </div>
-    </div>
+    <!--                        var resultDiv = document.getElementById("clickLatlng");-->
+    <!--                        resultDiv.innerHTML = message;-->
+    <!--                    });-->
+    <!--                </script>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </div>-->
 
     <!-- About End -->
 

@@ -45,12 +45,13 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
         http
+                .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/static/assets/css/**", "/static/assets/js/**", "/static/assets/img/**", "/static/assets/lib/**", "/static/assets/vendor/**", "/static/assets/image/**", "/uploads/**").permitAll()
                         .requestMatchers("/static/assets/vendor/js/**", "/static/assets/vendor/css/**").permitAll()
                         .requestMatchers("/layout", "/expired").permitAll()
                         .requestMatchers("/login/login", "/login/join", "/login/loginProc", "/login/joinProc", "/login/logout", "/mypage/**").permitAll()
-                        .requestMatchers("/index", "/reserve", "/reserve/create").permitAll()
+                        .requestMatchers("/index", "/reserve", "reserve/create").permitAll()
                         .anyRequest().hasAnyRole("트레이너", "회원")
 
 
@@ -89,7 +90,8 @@ public class SecurityConfig {
                 .exceptionHandling((exceptionConfig) ->
                         exceptionConfig.accessDeniedHandler(accessDeniedHandler()));
 
-//        http.csrf((csrf) -> csrf.disable());
+        // CSRF 비활성화
+//        http.csrf(csrf -> csrf.disable());
 
         return http.build();
     }

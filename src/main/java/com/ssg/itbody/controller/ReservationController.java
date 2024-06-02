@@ -23,11 +23,14 @@ public class ReservationController {
 
 
     @PostMapping("/create")
-    public ResponseEntity<Reservation> createReservation(@RequestBody ReservationRequestDTO reservationRequestDTO) {
-
-        System.out.println(reservationRequestDTO);
-        Reservation savedReservation = reservationService.saveReservation(reservationRequestDTO);
-        return ResponseEntity.status(HttpStatus.CREATED).body(savedReservation);
+    public ResponseEntity<?> createReservation(@RequestBody ReservationRequestDTO reservationRequestDTO) {
+        System.out.println("Received reservation request: " + reservationRequestDTO);
+        try {
+            Reservation savedReservation = reservationService.saveReservation(reservationRequestDTO);
+            return ResponseEntity.status(HttpStatus.CREATED).body(savedReservation);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error creating reservation: " + e.getMessage());
+        }
     }
 
     @GetMapping("/events")
